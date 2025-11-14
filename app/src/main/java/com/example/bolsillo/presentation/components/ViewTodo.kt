@@ -31,6 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.bolsillo.pruebas.PlainTooltipSample
 
 @Preview
 @Composable
@@ -67,6 +68,8 @@ fun ViewTodo() {
         Spacer(Modifier.height(4.dp))
 
         GraficaMes()
+
+
     }
 }
 
@@ -120,17 +123,21 @@ fun GraficaMes(modifier: Modifier = Modifier) {
                 textAlign = TextAlign.Center
             )
 
-            Box(modifier = Modifier
-                .height(160.dp)
-                .width(80.dp)
-                .background(
-                    brush = Brush.linearGradient(
-                        colors = listOf(Color(0xFF39E833), Color(0xFFB0F8A8)),
-                        start = Offset(0f, 0f),
-                        end = Offset(1000f, 1000f) // <- DIAGONAL
+            PlainTooltipSample(Cantidad = "$4000") {
+                Box(modifier = Modifier
+                    .height(160.dp)
+                    .width(80.dp)
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(Color(0xFF39E833), Color(0xFFB0F8A8)),
+                            start = Offset(0f, 0f),
+                            end = Offset(1000f, 1000f) // <- DIAGONAL
+                        )
                     )
                 )
-            )
+            }
+
+
 
         }
 
@@ -143,7 +150,44 @@ fun GraficaMes(modifier: Modifier = Modifier) {
 
         Column(modifier = Modifier
             .weight(1f)
+            .fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
+            Text(
+                text = "Egresos",
+                fontWeight = FontWeight.Bold,
+                color = Color(0xFF7D00F5),
+                modifier = Modifier
+
+                    .fillMaxWidth()
+                    .drawBehind {
+                        val strokeWidth = 2.dp.toPx()
+                        val y = size.height - strokeWidth / 2
+
+                        drawLine(
+                            color = Color(0xFF7D00F5),
+                            start = Offset(0f, y),
+                            end = Offset(size.width, y),
+                            strokeWidth = strokeWidth
+                        )
+                    },
+                textAlign = TextAlign.Center
+            )
+
+            PlainTooltipSample(Cantidad = "-$400") {
+                Box(modifier = Modifier
+                    .height(160.dp)
+                    .width(80.dp)
+                    .background(
+                        brush = Brush.linearGradient(
+                            colors = listOf(Color(0xFFF36161), Color(0xFFF8B0A8)),
+                            start = Offset(0f, 0f),
+                            end = Offset(1000f, 1000f) // <- DIAGONAL
+                        )
+                    )
+                )
+            }
 
         }
 
