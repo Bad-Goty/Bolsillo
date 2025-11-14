@@ -9,8 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.bolsillo.presentation.components.MainScaffold
 import com.example.bolsillo.presentation.screens.MainScreen
-
-//import com.example.bolsillo.ui.theme.BolsilloTheme
+import com.example.bolsillo.ui.theme.BolsilloTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
